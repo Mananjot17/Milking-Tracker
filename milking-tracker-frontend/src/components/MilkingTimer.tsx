@@ -59,8 +59,14 @@ export default function MilkingSession() {
       );
       resetSession();
       alert("Session saved!");
-    } catch (err: any) {
-      setError(err.response?.data?.error || "Error saving session");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.error || "Error saving session");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error saving session");
+      }
     }
   };
 

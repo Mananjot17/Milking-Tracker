@@ -10,9 +10,6 @@ export default function SessionsPage() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const observer = useRef<IntersectionObserver | null>(null);
   const lastSessionRef = useRef<HTMLTableRowElement | null>(null);
 
   const loadSessions = async (pageNum: number) => {
