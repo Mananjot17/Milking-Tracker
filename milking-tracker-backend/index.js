@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import connectDB from "./db/connectDB.js";
 import milkingSessionRoutes from "./routes/milkingSessionRoutes.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(express.json());
 
 app.use("/api/milking-sessions", milkingSessionRoutes);
+
+app.use(errorHandler);
 
 connectDB();
 
