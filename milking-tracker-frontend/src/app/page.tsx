@@ -15,16 +15,10 @@ export default function Home() {
   const [showTimer, setShowTimer] = useState(false);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen p-4"
-      style={{ backgroundColor: "var(--light-green)" }}
-    >
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-light-green">
       {!showTimer ? (
         <>
-          <h1
-            className="text-3xl font-bold mb-8"
-            style={{ color: "var(--dark-green)" }}
-          >
+          <h1 className="text-3xl font-bold mb-8 text-dark-green">
             🐄 Milking Tracker
           </h1>
           <button
@@ -40,11 +34,7 @@ export default function Home() {
         </Suspense>
       )}
 
-      <Link
-        href="/history"
-        style={{ color: "var(--dark-green)" }}
-        className="underline mt-6"
-      >
+      <Link href="/history" className="underline mt-6 text-dark-green">
         View Milking History
       </Link>
     </div>

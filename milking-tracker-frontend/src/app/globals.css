@@ -12,6 +12,7 @@
 .bg-dark-green { background-color: var(--dark-green); }
 .text-dark-green { color: var(--dark-green); }
 .bg-light-green { background-color: var(--light-green); }
+.text-dark-gray { color: var(--dark-gray); }
 
 /* Global styles */
 body {

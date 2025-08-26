@@ -65,17 +65,11 @@ export default function MilkingSession() {
     <div className="flex flex-col items-center justify-center p-4">
       <audio ref={audioRef} src="/music/Moon-Waltz.mp3" loop />
 
-      <h1
-        className="text-2xl font-bold mb-4"
-        style={{ color: "var(--dark-green)" }}
-      >
+      <h1 className="text-2xl font-bold mb-4 text-dark-green">
         Milking Session
       </h1>
 
-      <p
-        className="text-4xl font-mono mb-4"
-        style={{ color: "var(--dark-gray)" }}
-      >
+      <p className="text-4xl font-mono mb-4 text-dark-gray">
         {Math.floor(seconds / 60)}:{("0" + (seconds % 60)).slice(-2)}
       </p>
 
