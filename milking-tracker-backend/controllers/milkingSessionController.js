@@ -1,15 +1,13 @@
-import MilkingSession from "../models/MilkingSession";
+import MilkingSession from "../models/MilkingSession.js";
 
 export const createSession = async (req, res) => {
   try {
     const { start_time, end_time, milk_quantity } = req.body;
 
     if (!start_time || !end_time || milk_quantity == null) {
-      return res
-        .status(400)
-        .json({
-          error: "start_time, end_time, and milk_quantity are required.",
-        });
+      return res.status(400).json({
+        error: "start_time, end_time, and milk_quantity are required.",
+      });
     }
 
     const startDate = new Date(start_time);

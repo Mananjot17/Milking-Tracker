@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.post("/sessions", createSession);
-router.get("/sessions", getSessions);
+router.post("/", createSession);
+router.get("/", getSessions);
 
 export default router;
