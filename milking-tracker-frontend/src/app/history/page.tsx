@@ -2,25 +2,17 @@
 
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
-
-interface Session {
-  id: string; // UUID from backend
-  start_time: string;
-  end_time: string;
-  duration: number; // seconds
-  milk_quantity: number;
-}
+import { MilkingSession } from "../types";
 
 export default function SessionsPage() {
-  const [sessions, setSessions] = useState<Session[]>([]);
+  const [sessions, setSessions] = useState<MilkingSession[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch sessions from API
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const res = await axios.get<Session[]>(
+        const res = await axios.get<MilkingSession[]>(
           "http://localhost:5000/api/milking-sessions"
         );
         setSessions(res.data);
@@ -35,21 +27,18 @@ export default function SessionsPage() {
     fetchSessions();
   }, []);
 
-  // Helper: format date
   const formatDate = (dateStr: string) =>
     new Intl.DateTimeFormat("en-IN", {
       dateStyle: "medium",
       timeStyle: "short",
     }).format(new Date(dateStr));
 
-  // Helper: format duration
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}m ${secs}s`;
   };
 
-  // Memoized sessions with formatted values
   const processedSessions = useMemo(
     () =>
       sessions.map((s) => ({
@@ -89,7 +78,7 @@ export default function SessionsPage() {
               </tr>
             ) : (
               processedSessions.map((session) => (
-                <tr key={session.id} className="border-b hover:bg-gray-100">
+                <tr key={session._id} className="border-b hover:bg-gray-100">
                   <td className="px-4 py-2">{session.formattedStart}</td>
                   <td className="px-4 py-2">{session.formattedEnd}</td>
                   <td className="px-4 py-2">{session.formattedDuration}</td>
