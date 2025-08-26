@@ -57,8 +57,23 @@ export const createSession = async (req, res, next) => {
 
 export const getSessions = async (req, res, next) => {
   try {
-    const sessions = await MilkingSession.find().sort({ created_at: -1 });
-    res.json(sessions);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const sessions = await MilkingSession.find()
+      .sort({ created_at: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await MilkingSession.countDocuments();
+
+    res.json({
+      sessions,
+      total,
+      page,
+      pages: Math.ceil(total / limit),
+    });
   } catch (error) {
     next(error);
   }
