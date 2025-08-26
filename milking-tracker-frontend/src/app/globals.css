@@ -30,6 +30,16 @@ body {
 .btn-green:hover {
   background-color: var(--med-green);
 }
+.btn-red {
+  background-color: #D32F2F;
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s;
+}
+.btn-red:hover {
+  background-color: #B71C1C;
+}
 
 
 /* Input */
