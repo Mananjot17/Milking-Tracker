@@ -15,7 +15,6 @@ export default function MilkingSession() {
     if (isRunning) {
       timerRef.current = setInterval(() => setSeconds((s) => s + 1), 1000);
       if (audioRef.current) {
-        audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
     } else {
@@ -32,10 +31,14 @@ export default function MilkingSession() {
     setMilkQuantity("");
     setIsRunning(false);
     setError("");
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+    }
   };
 
   const handleStop = async () => {
     setIsRunning(false);
+
     const duration = seconds;
     const milk = parseFloat(milkQuantity);
 
@@ -59,10 +62,7 @@ export default function MilkingSession() {
   };
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen p-4"
-      style={{ backgroundColor: "var(--light-green)" }}
-    >
+    <div className="flex flex-col items-center justify-center p-4">
       <audio ref={audioRef} src="/music/Moon-Waltz.mp3" loop />
 
       <h1
@@ -92,16 +92,13 @@ export default function MilkingSession() {
         </button>
       </div>
 
-      <div className="flex items-center gap-2">
-        <input
-          type="number"
-          placeholder="Milk Quantity"
-          className="input"
-          value={milkQuantity}
-          onChange={(e) => setMilkQuantity(e.target.value)}
-        />
-        <span className="text-gray-700">liters</span>
-      </div>
+      <input
+        type="number"
+        placeholder="Milk Quantity (lit)"
+        className="input"
+        value={milkQuantity}
+        onChange={(e) => setMilkQuantity(e.target.value)}
+      />
 
       {error && <p className="text-red-600 mt-2">{error}</p>}
     </div>

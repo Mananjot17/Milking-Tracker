@@ -9,6 +9,10 @@
   --white: #FFFFFF;
 }
 
+.bg-dark-green { background-color: var(--dark-green); }
+.text-dark-green { color: var(--dark-green); }
+.bg-light-green { background-color: var(--light-green); }
+
 /* Global styles */
 body {
   font-family: 'Poppins', sans-serif;
