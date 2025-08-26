@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Suspense } from "react";
@@ -11,7 +10,6 @@ const MilkingTimer = dynamic(() => import("../components/MilkingTimer"), {
 });
 
 export default function Home() {
-  const router = useRouter();
   const [showTimer, setShowTimer] = useState(false);
 
   return (

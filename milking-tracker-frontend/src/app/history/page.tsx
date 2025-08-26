@@ -21,7 +21,9 @@ export default function SessionsPage() {
       const res = await axios.get<{
         sessions: MilkingSession[];
         pages: number;
-      }>(`http://localhost:5000/api/milking-sessions?page=${pageNum}&limit=5`);
+      }>(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/milking-sessions?page=${pageNum}&limit=5`
+      );
       setSessions((prev) => {
         const newSessions = res.data.sessions.filter(
           (s) => !prev.some((p) => p._id === s._id)

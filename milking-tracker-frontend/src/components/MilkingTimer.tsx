@@ -48,12 +48,15 @@ export default function MilkingSession() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/milking-sessions", {
-        start_time: new Date(Date.now() - duration * 1000).toISOString(),
-        end_time: new Date().toISOString(),
-        duration,
-        milk_quantity: milk,
-      });
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/milking-sessions`,
+        {
+          start_time: new Date(Date.now() - duration * 1000).toISOString(),
+          end_time: new Date().toISOString(),
+          duration,
+          milk_quantity: milk,
+        }
+      );
       resetSession();
       alert("Session saved!");
     } catch (err: any) {
