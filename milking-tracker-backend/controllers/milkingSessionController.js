@@ -4,9 +4,9 @@ export const createSession = async (req, res, next) => {
   try {
     const { start_time, end_time, duration, milk_quantity } = req.body;
 
-    if (!start_time || !end_time || milk_quantity == null) {
+    if (!start_time || !end_time || milk_quantity || duration == null) {
       const error = new Error(
-        "start time, end time and milk quantity are required."
+        "start time, end time, duration and milk quantity are required."
       );
       error.statusCode = 400;
       throw error;
