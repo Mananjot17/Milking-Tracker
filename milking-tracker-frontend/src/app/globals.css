@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --dark-green: #16857C;
+  --med-green: #3f8884;
+  --light-green: #C8E6C9;
+  --dark-gray: #333333;
+  --light-gray: #F5F5F5;
+  --white: #FFFFFF;
+}
+
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  margin: 0;
+  padding: 0;
+}
+
+/* Buttons */
+.btn-green {
+  background-color: var(--dark-green);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s;
+}
+
+.btn-green:hover {
+  background-color: var(--med-green);
+}
+
+
+/* Input */
+.input {
+  border: 1px solid var(--dark-green);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}

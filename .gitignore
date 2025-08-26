@@ -1,2 +1,4 @@
 milking-tracker-backend/.env
 milking-tracker-backend/node_modules
+milking-tracker-frontend/node_modules
+milking-tracker-frontend/.env
